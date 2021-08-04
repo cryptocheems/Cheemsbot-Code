@@ -4,7 +4,7 @@ from discord.ext import commands, tasks
 
 from gql import Client, gql
 from gql.transport.aiohttp import AIOHTTPTransport
-
+import random
 from os import getenv
 from dotenv import load_dotenv
 
@@ -85,7 +85,7 @@ async def tip(ctx, member: discord.Member):
         )
 # find another persons balance!
 
-@bot.command(help="Pull someone elses balance!", brief="see the dough"
+@bot.command(help="Pull someone elses balance!", brief="see the dough")
     async def bal(ctx, member: discord.Member):
              findBal = "@"+ str(member)
              walletCheck = findBal in dictOn
@@ -94,6 +94,19 @@ async def tip(ctx, member: discord.Member):
              else
                  await ctx.channel.send("That person is not registered to our database. Please use Cheems-register to be added to our database!")
 
+#fuck you all. i hate every one of you
+
+@bot.command(help="comck and ballm tormture", brief ="sugma")
+    async def cbt(ctx):
+        cbtphrase = random.randint(1,6) + "m"
+        1m = "I am goimg to spamnk your ballms"
+        2m = "Kimcks you imn ballsm"
+        3m = "Timckles your uremthra"
+        4m = "snimp snimp :scissors:"
+        5m = "Squeemzes your comck"
+        6m = "Parmtakes in bosnian emthic cleamsing"
+        await ctx.channel.send(cbtphrase)
+        
 # putting price in the status
 @bot.event
 async def on_ready():
@@ -113,3 +126,4 @@ async def changeStatus():
 
 # bot running
 bot.run(TOKEN)
+
