@@ -83,7 +83,16 @@ async def tip(ctx, member: discord.Member):
         await ctx.channel.send(
             f"{member.mention} is not registered. Please register using the Cheems-register command followed by your wallet address. "
         )
+# find another persons balance!
 
+@bot.command(help="Pull someone elses balance!", brief="see the dough"
+    async def bal(ctx, member: discord.Member):
+             findBal = "@"+ str(member)
+             walletCheck = findBal in dictOn
+             if walletCheck == True:
+                 await ctx.channel.send("https://blockscout.com/xdai/mainnet/address/" + f"{dictOn[findBal]} " + "/tokens"
+             else
+                 await ctx.channel.send("That person is not registered to our database. Please use Cheems-register to be added to our database!")
 
 # putting price in the status
 @bot.event
