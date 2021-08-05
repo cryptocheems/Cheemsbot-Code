@@ -1,3 +1,5 @@
+
+
 import discord
 import json
 from discord.ext import commands, tasks
@@ -106,6 +108,11 @@ async def tip(ctx, member: discord.Member):
         5m = "Squeemzes your comck"
         6m = "Parmtakes in bosnian emthic cleamsing"
         await ctx.channel.send(cbtphrase)
+#tells someone to shut up
+@bot.command(help="tell someone to shut up", brief = "same as previous")
+    async def shut(ctx, memeber: discord.member):
+        memberName = "@" + str(member)
+        await ctx.channel.send(f"Shut the fuck up ${memberName}")
         
 # putting price in the status
 @bot.event
@@ -126,4 +133,3 @@ async def changeStatus():
 
 # bot running
 bot.run(TOKEN)
-
