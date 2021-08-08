@@ -92,7 +92,7 @@ async def bal(ctx, member: discord.Member):
     walletCheck = findBal in dictOn
     if walletCheck == True:
         await ctx.channel.send(
-            "https://blockscout.com/xdai/mainnet/address/" + f"{dictOn[findBal]} " + "/tokens"
+            "https://blockscout.com/xdai/mainnet/address/" + dictOn[findBal] + "/tokens"
         )
     else:
         await ctx.channel.send(
@@ -117,9 +117,8 @@ async def cbt(ctx):
 
 # tells someone to shut up
 @bot.command(help="tell someone to shut up", brief="same as previous")
-async def shut(ctx, member: discord.member):
-    memberName = "@" + str(member)
-    await ctx.channel.send(f"Shut the fuck up ${memberName}")
+async def shut(ctx, member):
+    await ctx.channel.send(f"Shut the fuck up {member}")
 
 
 # putting price in the status
