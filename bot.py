@@ -1,5 +1,3 @@
-
-
 import discord
 import json
 from discord.ext import commands, tasks
@@ -85,35 +83,45 @@ async def tip(ctx, member: discord.Member):
         await ctx.channel.send(
             f"{member.mention} is not registered. Please register using the Cheems-register command followed by your wallet address. "
         )
+
+
 # find another persons balance!
-
 @bot.command(help="Pull someone elses balance!", brief="see the dough")
-    async def bal(ctx, member: discord.Member):
-             findBal = "@"+ str(member)
-             walletCheck = findBal in dictOn
-             if walletCheck == True:
-                 await ctx.channel.send("https://blockscout.com/xdai/mainnet/address/" + f"{dictOn[findBal]} " + "/tokens"
-             else
-                 await ctx.channel.send("That person is not registered to our database. Please use Cheems-register to be added to our database!")
+async def bal(ctx, member: discord.Member):
+    findBal = "@" + str(member)
+    walletCheck = findBal in dictOn
+    if walletCheck == True:
+        await ctx.channel.send(
+            "https://blockscout.com/xdai/mainnet/address/" + f"{dictOn[findBal]} " + "/tokens"
+        )
+    else:
+        await ctx.channel.send(
+            "That person is not registered to our database. Please use Cheems-register to be added to our database!"
+        )
 
-#fuck you all. i hate every one of you
 
-@bot.command(help="comck and ballm tormture", brief ="sugma")
-    async def cbt(ctx):
-        cbtphrase = random.randint(1,6) + "m"
-        1m = "I am goimg to spamnk your ballms"
-        2m = "Kimcks you imn ballsm"
-        3m = "Timckles your uremthra"
-        4m = "snimp snimp :scissors:"
-        5m = "Squeemzes your comck"
-        6m = "Parmtakes in bosnian emthic cleamsing"
-        await ctx.channel.send(cbtphrase)
-#tells someone to shut up
-@bot.command(help="tell someone to shut up", brief = "same as previous")
-    async def shut(ctx, memeber: discord.member):
-        memberName = "@" + str(member)
-        await ctx.channel.send(f"Shut the fuck up ${memberName}")
-        
+CBT_PHRASES = [
+    "I am goimg to spamnk your ballms",
+    "Kimcks you imn ballsm",
+    "Timckles your uremthra",
+    "snimp snimp :scissors:",
+    "Squeemzes your comck",
+    "Parmtakes in bosnian emthic cleamsing",
+]
+# fuck you all. i hate every one of you
+@bot.command(help="comck and ballm tormture", brief="sugma")
+async def cbt(ctx):
+    cbtphrase = random.choice(CBT_PHRASES)
+    await ctx.channel.send(cbtphrase)
+
+
+# tells someone to shut up
+@bot.command(help="tell someone to shut up", brief="same as previous")
+async def shut(ctx, member: discord.member):
+    memberName = "@" + str(member)
+    await ctx.channel.send(f"Shut the fuck up ${memberName}")
+
+
 # putting price in the status
 @bot.event
 async def on_ready():
